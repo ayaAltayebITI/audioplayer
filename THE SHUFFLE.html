@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Audio PLayer</title>
+</head>
+<body>
+
+    
+        <audio controls id="audio">
+ 
+                <source src="" type="audio/mpeg" id="source">
+              Your browser does not support the audio element.
+              </audio>
+
+
+
+           <button  onclick="play()">play</button>  
+           <button  onclick="replay()">repeat</button>  
+           <button  onclick="shuffle()">shuffle</button>  
+        
+              <li song="1.mp3">BostonLanding</li>
+              <li song="2.mp3">OrditingtheEarth</li>
+              <li song="3.mp3">Underworld</li>
+              <li song="4.mp3">SundayMarket</li>
+              <li song="5.mp3">Winning</li>
+            
+
+    <script>
+
+//console.log("hello");
+          var songs= [];
+          var repeat_songs= [];
+          var shuffle_result= [];
+         
+          songs.push("1.mp3");
+          songs.push("2.mp3");
+          songs.push("3.mp3");
+          songs.push("4.mp3");
+          songs.push("5.mp3");
+////////////////////////////////////////////////////
+         repeat_songs.push("1.mp3");
+         repeat_songs.push("2.mp3");
+         repeat_songs.push("3.mp3");
+          repeat_songs.push("4.mp3");
+          repeat_songs.push("5.mp3");
+
+ ////////////////////////////////////////////////////////////
+          var shuffle_songs= songs.slice();
+
+          var audio = document.getElementById("audio");
+          var source = document.getElementById("source");
+         
+
+
+
+
+
+
+
+
+
+
+
+          var i = 0;
+          function play(){
+           
+            source.src="audio/"+songs[i];
+           //   console.log(source.src);
+
+            audio.load();
+            audio.play();
+            audio.onended = function(){
+              i++;         
+              if (i< songs.length){     
+              source.src="audio/"+songs[i];
+             // console.log(source.src);
+              audio.load();
+              audio.play();
+              }
+  
+                }
+                             
+          }
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+          var j = 0;
+          function replay(){
+           source.src="audio/"+repeat_songs[0];
+           //   console.log(source.src);
+              audio.load();
+                            audio.play();
+              audio.onended = function(){
+                j++;         
+                if (j< repeat_songs.length){     
+                source.src="audio/"+repeat_songs[j];
+               // console.log(source.src);
+                audio.load();
+                audio.play();
+                }
+                else{
+                j = 0;
+                source.src="audio/"+repeat_songs[j];
+               // console.log(source.src);
+                audio.load();
+                audio.play();
+
+
+
+                }
+
+                  }
+                              
+              }
+
+//////////////////////////////////////////////////////////////////
+
+
+
+var k = 0;
+          function shuffle(){
+
+
+            while( shuffle_songs.length ) {
+
+              var song = shuffle_songs.splice( Math.floor(Math.random()*shuffle_songs.length), 1 );
+           //   console.log(song);
+              shuffle_result.push(song);
+
+             }
+         
+           source.src="audio/"+shuffle_result[0];
+            //  console.log(source.src);
+              audio.load();
+             audio.play();
+              audio.onended = function(){
+                k++;         
+                if (k< shuffle_result.length){     
+                source.src="audio/"+shuffle_result[k];
+              //  console.log(source.src);
+                audio.load();
+                audio.play();
+                }
+               
+
+                  }
+                              
+              }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+
+        
+    
+    </script>
+    
+</body>
+</html>
